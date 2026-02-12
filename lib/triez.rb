@@ -1,4 +1,4 @@
-require_relative "../ext/triez"
+require "triez/triez"
 
 class Triez
   VERSION = '1.0.6'

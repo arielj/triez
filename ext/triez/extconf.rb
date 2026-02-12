@@ -3,7 +3,7 @@ require "mkmf"
 $CFLAGS << ' -Ihat-trie'
 $CPPFLAGS << ' -Ihat-trie'
 $LDFLAGS << ' -Lbuild -ltries'
-create_makefile 'triez'
+create_makefile 'triez/triez'
 
 # respect header changes
 headers = Dir.glob('*.{hpp,h}').join ' '
