@@ -14,12 +14,12 @@ task :glob_src => vendor_files + [:clean] do
     sh *%w"git fetch"
     sh *%w"git rebase FETCH_HEAD master"
   end
-  rm Dir.glob 'ext/hat-trie/*.{h,c}'
+  rm Dir.glob 'ext/treiz/hat-trie/*.{h,c}'
   hat_files = Dir.glob('hat-trie/src/*.{h,c}').select do |f|
     !(%w[common.h].include? File.basename(f))
   end
-  cp hat_files, 'ext/hat-trie'
-  cp 'hat-trie/COPYING', 'ext/hat-trie'
+  cp hat_files, 'ext/treiz/hat-trie'
+  cp 'hat-trie/COPYING', 'ext/treiz/hat-trie'
 end
 
 desc "download hat source"

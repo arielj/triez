@@ -1,4 +1,4 @@
-#include <../hat-trie.h>
+#include <hat-trie.h>
 #include <ruby.h>
 #include <ruby/encoding.h>
 

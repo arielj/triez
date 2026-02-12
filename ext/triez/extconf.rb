@@ -18,5 +18,5 @@ File.open 'Makefile', 'a' do |f|
     else
       "-r"
     end
-  f.puts "\tmkdir -p build && cd build && $(CC) -O3 -std=c99 -Wall -pedantic -fPIC -c -I.. ../../hat-trie/*.c && $(AR) #{ar_opt} libtries.a *.o"
+  f.puts "\tmkdir -p build && cd build && $(CC) -O3 -std=c99 -Wall -pedantic -fPIC -c -I.. ../hat-trie/*.c && $(AR) #{ar_opt} libtries.a *.o"
 end
