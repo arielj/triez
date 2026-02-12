@@ -11,19 +11,25 @@ vendor_lib = 'ext/build/libtries.a'
 desc "glob src for gem redist"
 task :glob_src => vendor_files + [:clean] do
   Dir.chdir 'hat-trie' do
+    puts "in hat-trie"
     sh *%w"git fetch"
     sh *%w"git rebase FETCH_HEAD master"
   end
+  puts "deleting"
   rm Dir.glob 'ext/triez/hat-trie/*.{h,c}'
+  puts "files"
   hat_files = Dir.glob('hat-trie/src/*.{h,c}').select do |f|
     !(%w[common.h].include? File.basename(f))
   end
+  puts "copy"
   cp hat_files, 'ext/triez/hat-trie'
+  puts "copy2"
   cp 'hat-trie/COPYING', 'ext/triez/hat-trie'
 end
 
 desc "download hat source"
 file 'hat-trie' do
+  puts "downloading hat-trie"
   sh 'git', 'clone', 'git://github.com/luikore/hat-trie.git'
 end
 
@@ -35,6 +41,7 @@ end
 desc "build ext"
 file so_file => src_files + [extconf, vendor_lib] do
   Dir.chdir 'ext/triez' do
+    puts "building"
     sh 'ruby', 'extconf.rb'
     sh 'make'
   end
@@ -45,6 +52,7 @@ file vendor_lib
 
 desc "clean ext"
 task :clean do
+  puts "cleaning"
   Dir.chdir 'ext' do
     if File.exist?('Makefile')
       sh 'make', 'clean'
