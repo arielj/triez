@@ -3,7 +3,7 @@ require "fileutils"
 include FileUtils
 
 so_file = "ext/triez.#{RbConfig::CONFIG['DLEXT']}"
-src_files = Dir.glob('ext/treiz/*.{h,c,cc}')
+src_files = Dir.glob('ext/triez/*.{h,c,cc}')
 vendor_files = %w[hat-trie]
 extconf = 'ext/triez/extconf.rb'
 vendor_lib = 'ext/build/libtries.a'
@@ -14,12 +14,12 @@ task :glob_src => vendor_files + [:clean] do
     sh *%w"git fetch"
     sh *%w"git rebase FETCH_HEAD master"
   end
-  rm Dir.glob 'ext/treiz/hat-trie/*.{h,c}'
+  rm Dir.glob 'ext/triez/hat-trie/*.{h,c}'
   hat_files = Dir.glob('hat-trie/src/*.{h,c}').select do |f|
     !(%w[common.h].include? File.basename(f))
   end
-  cp hat_files, 'ext/treiz/hat-trie'
-  cp 'hat-trie/COPYING', 'ext/treiz/hat-trie'
+  cp hat_files, 'ext/triez/hat-trie'
+  cp 'hat-trie/COPYING', 'ext/triez/hat-trie'
 end
 
 desc "download hat source"
