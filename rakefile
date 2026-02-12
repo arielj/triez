@@ -3,7 +3,7 @@ require "fileutils"
 include FileUtils
 
 so_file = "ext/triez.#{RbConfig::CONFIG['DLEXT']}"
-src_files = Dir.glob('ext/*.{h,c,cc}')
+src_files = Dir.glob('ext/treiz/*.{h,c,cc}')
 vendor_files = %w[hat-trie]
 extconf = 'ext/triez/extconf.rb'
 vendor_lib = 'ext/build/libtries.a'
