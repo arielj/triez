@@ -30,7 +30,7 @@ end
 desc "download hat source"
 file 'hat-trie' do
   puts "downloading hat-trie"
-  sh 'git', 'clone', 'git://github.com/luikore/hat-trie.git'
+  sh 'git', 'clone', 'https://github.com/luikore/hat-trie.git'
 end
 
 desc "run tests"
